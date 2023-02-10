@@ -1,8 +1,6 @@
 import './App.css';
-import React from 'react';
-import { BrowserRouter, Routes, Route} from 'react-router-dom';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState }  from 'react';
+import { BrowserRouter, Routes, Route, useNavigate, useParams} from 'react-router-dom';
 
 function App() {
   return (
@@ -10,7 +8,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/welcome" element={<Welcome />} />
+          <Route path="/welcome/:username" element={<Welcome />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>      
@@ -39,7 +37,7 @@ function App() {
         if (username === "admin" && password === "admin") {
             setShowSuccessMessage(true);
             setShowFailMessage(false);
-            navigate('/welcome');
+            navigate('/welcome/${username}');
         } else {
             setShowFailMessage(true);
             setShowSuccessMessage(false);
@@ -71,6 +69,8 @@ function App() {
             )
         }
     };
+
+    
 
     return (
         <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8 ">
@@ -133,12 +133,16 @@ function App() {
 };
 
 function Welcome() {
+
+  const {username} = useParams();
+  console.log(username)
+
   return (
       <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8 ">
           <div className="w-full max-w-md space-y-8">
               <div>
                   <h2 className="mt-3 text-center text-xl font-bold tracking-tight text-gray-900">
-                      Welcome
+                      Welcome {username}!
                   </h2>
               </div>
           </div>
