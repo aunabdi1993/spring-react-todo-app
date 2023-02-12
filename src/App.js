@@ -11,6 +11,7 @@ function App() {
                     <Route path="/" element={<Login />} />
                     <Route path="/welcome/:username" element={<Welcome />} />
                     <Route path="/todos" element={<Todos />} />
+                    <Route path="/logout" element={<Logout />} />
                     <Route path="*" element={<Error />} />
                 </Routes>
             </BrowserRouter>
@@ -242,10 +243,28 @@ function App() {
                     <div className="hidden md:block">
                       <div className="ml-10 flex items-baseline space-x-4">
                         <a
-                          href="#"
+                          href="/"
                           className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
                         >
                           Todo App
+                        </a>
+                        <a
+                          href="/"
+                          className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
+                        >
+                          Login
+                        </a>
+                        <a
+                          href="/todos"
+                          className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
+                        >
+                          Todos
+                        </a>
+                        <a
+                          href="/logout"
+                          className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium align-right"
+                        >
+                          Logout
                         </a>
                       </div>
                     </div>
@@ -254,6 +273,24 @@ function App() {
               </div>
             </nav>
           </div>
+        )
+    };
+
+    function Logout() {
+        return (
+            <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8 ">
+                <div className="w-full max-w-md space-y-8">
+                    <div>
+                        <h2 className="mt-3 text-center text-xl font-bold tracking-tight text-gray-900">
+                            You're logged out.
+                        </h2>
+                        <p>
+                            Thanks for using our app. Please come back soon.
+                            To login again, click <Link to="/">here</Link>.
+                        </p>
+                    </div>
+                </div>
+            </div>
         )
     };
 
