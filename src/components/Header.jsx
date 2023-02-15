@@ -7,6 +7,8 @@ function Header() {
     const authContext = useAuth();
     const isAuthenticated = authContext.isAuthenticated;
 
+    
+
     return (
         <div>
             <nav className="bg-gray-800">
